@@ -1,0 +1,119 @@
+@import '@fontsource/inter';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(0, 176, 80, 0.4); }
+  70% { box-shadow: 0 0 0 20px rgba(0, 176, 80, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 176, 80, 0); }
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+.typing-text {
+  display: inline-block;
+  overflow: hidden;
+  border-right: 3px solid #00B050;
+  white-space: nowrap;
+  margin: 0;
+  animation: 
+    typing 3.5s steps(40, end),
+    blink 0.75s step-end infinite;
+}
+
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes gradient-x {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+.glowing {
+  animation: pulse 2s infinite;
+}
+
+.ticker {
+  animation: ticker 20s linear infinite;
+}
+
+.gradient-bg {
+  background: linear-gradient(-45deg, #0A0A0A, #141414, #0A0A0A, #141414);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+.grid-bg {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.animate-gradient-x {
+  animation: gradient-x 3s linear infinite;
+  background-size: 200% auto;
+}
+
+@layer components {
+  .input-field {
+    @apply w-full px-4 py-2 rounded bg-card text-white border border-border focus:outline-none focus:ring-2 focus:ring-accent;
+  }
+
+  .select-field {
+    @apply w-full px-4 py-2 rounded bg-card text-white border border-border focus:outline-none focus:ring-2 focus:ring-accent;
+  }
+
+  .btn {
+    @apply bg-accent text-black font-bold py-2 px-4 rounded hover:brightness-110 transition;
+  }
+
+  .dashboard-card {
+    @apply p-6 rounded-lg bg-card shadow-card backdrop-blur-sm border border-border/10;
+  }
+
+  .metric-value {
+    @apply text-2xl font-semibold text-accent mt-2;
+  }
+
+  .chart-container {
+    @apply bg-card p-6 rounded-lg shadow-card;
+  }
+
+  .table-container {
+    @apply bg-card p-6 rounded-lg shadow-card;
+  }
+
+  .data-table {
+    @apply w-full text-white;
+  }
+
+  .data-table th,
+  .data-table td {
+    @apply px-4 py-2 border-b border-border;
+  }
+}
